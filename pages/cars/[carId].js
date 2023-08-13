@@ -14,7 +14,7 @@ function CarDetails() {
 
   const selectedCarData = carsListData[carId - 1];
 
-  return <CarDetailsPage selectedCarData={selectedCarData} />;
+  return <CarDetailsPage {...selectedCarData} />;
 }
 
 export default CarDetails;

@@ -6,8 +6,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const poppins = Poppins({
-  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 function Layout({ children }) {
