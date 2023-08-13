@@ -6,7 +6,7 @@ function CarsContextProvider({ children }) {
   const [carsListData, setCarsListData] = React.useState([]);
 
   React.useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/data`)
+    fetch(`${process.env.BASE_URL}/data`)
       .then((res) => res.json())
       .then((data) => setCarsListData(data));
   }, []);
