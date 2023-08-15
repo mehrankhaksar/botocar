@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { RiArrowLeftSLine } from "react-icons/ri";
 
 import Button from "../Elements/Button";
-import CarsCard from "../modules/CarsCard";
+import Card from "../modules/Card";
 
 function FilteredCarsListPage({ filteredCarsList }) {
   const router = useRouter();
@@ -25,7 +25,7 @@ function FilteredCarsListPage({ filteredCarsList }) {
       <ul className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
         {filteredCarsList.map((item) => (
           <li key={item.id}>
-            <CarsCard {...item} />
+            <Card {...item} />
           </li>
         ))}
       </ul>

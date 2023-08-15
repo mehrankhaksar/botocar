@@ -1,20 +1,44 @@
 import React from "react";
 
-import { useRouter } from "next/router";
-
-import { CarsContext } from "@/context/CarsContextProvider";
-
 import CarDetailsPage from "@/components/templates/CarDetailsPage";
 
-function CarDetails() {
-  const router = useRouter();
-  const { carId } = router.query;
-
-  const carsListData = React.useContext(CarsContext);
-
-  const selectedCarData = carsListData[carId - 1];
-
-  return <CarDetailsPage {...selectedCarData} />;
+function CarDetails({ data }) {
+  return <CarDetailsPage {...data} />;
 }
 
 export default CarDetails;
+
+export async function getStaticPaths() {
+  const res = await fetch(`${process.env.BASE_URL}/data`);
+  const data = await res.json();
+
+  const newData = data.slice(0, 6);
+
+  const paths = newData.map((item) => ({
+    params: { carId: item.id.toString() },
+  }));
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context) {
+  const {
+    params: { carId },
+  } = context;
+
+  const res = await fetch(`${process.env.BASE_URL}/data/${carId}`);
+  const data = await res.json();
+
+  if (!data.name) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { data },
+  };
+}

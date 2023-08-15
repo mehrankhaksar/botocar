@@ -1,7 +1,7 @@
 import React from "react";
 
 import Loader from "../Elements/Loader";
-import CarsCard from "../modules/CarsCard";
+import Card from "../modules/Card";
 
 function CarsListPage({ carsListData }) {
   return (
@@ -14,7 +14,7 @@ function CarsListPage({ carsListData }) {
         <ul className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
           {carsListData.map((item) => (
             <li key={item.id}>
-              <CarsCard {...item} />
+              <Card {...item} />
             </li>
           ))}
         </ul>

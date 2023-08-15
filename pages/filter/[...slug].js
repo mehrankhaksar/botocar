@@ -2,20 +2,16 @@ import React from "react";
 
 import { useRouter } from "next/router";
 
-import { CarsContext } from "@/context/CarsContextProvider";
-
 import { RiArrowLeftSLine } from "react-icons/ri";
 
 import Button from "@/components/Elements/Button";
-import CarsCard from "@/components/modules/CarsCard";
+import Card from "@/components/modules/Card";
 
-function FilteredCarsList() {
+function FilteredCarsList({ data }) {
   const router = useRouter();
   const [minPrice, maxPrice] = router.query.slug || [];
 
-  const carsListData = React.useContext(CarsContext);
-
-  const filteredCarsList = carsListData.filter(
+  const filteredCarsList = data.filter(
     (item) => item.price > minPrice && item.price < maxPrice
   );
 
@@ -39,7 +35,7 @@ function FilteredCarsList() {
         <ul className="grid justify-center gap-3 sm:grid-cols-2 md:grid-cols-3">
           {filteredCarsList.map((item) => (
             <li key={item.id}>
-              <CarsCard {...item} />
+              <Card {...item} />
             </li>
           ))}
         </ul>
@@ -49,3 +45,12 @@ function FilteredCarsList() {
 }
 
 export default FilteredCarsList;
+
+export async function getServerSideProps() {
+  const res = await fetch(`${process.env.BASE_URL}/data`);
+  const data = await res.json();
+
+  return {
+    props: { data },
+  };
+}

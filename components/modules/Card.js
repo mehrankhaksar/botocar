@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
-function CarsCard({ id, image, name, model, year, distance, price, location }) {
+function Card({ id, image, name, model, year, distance, price, location }) {
   return (
     <Link href={`/cars/${id}`}>
       <article className="space-y-3 p-4 rounded-sm shadow-md">
@@ -35,4 +35,4 @@ function CarsCard({ id, image, name, model, year, distance, price, location }) {
   );
 }
 
-export default CarsCard;
+export default Card;

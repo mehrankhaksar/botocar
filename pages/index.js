@@ -1,15 +1,9 @@
-import { useContext } from "react";
-
-import { CarsContext } from "@/context/CarsContextProvider";
-
 import FiltersContainer from "@/components/FiltersContainer";
 import Button from "@/components/Elements/Button";
 import CarsListPage from "@/components/templates/CarsListPage";
 
-export default function Home() {
-  const carsListData = useContext(CarsContext);
-
-  const newCarsListData = carsListData.slice(0, 3);
+export default function Home({ data }) {
+  const newCarsListData = data.slice(0, 3);
 
   return (
     <section className="w-full flex flex-col items-center space-y-4">
@@ -22,4 +16,13 @@ export default function Home() {
       <CarsListPage carsListData={newCarsListData} />
     </section>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch(`${process.env.BASE_URL}/data`);
+  const data = await res.json();
+
+  return {
+    props: { data },
+  };
 }
