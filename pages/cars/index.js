@@ -1,6 +1,6 @@
 import React from "react";
 
-import FiltersContainer from "@/components/FiltersContainer";
+import FiltersContainer from "@/components/modules/FiltersContainer";
 import CarsListPage from "@/components/templates/CarsListPage";
 
 function CarsList({ data }) {

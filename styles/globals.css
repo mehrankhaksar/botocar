@@ -4,18 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.car-detail {
-  @apply flex justify-between items-center text-sm;
-}
+@layer components {
+  body {
+    @apply bg-[#f7f7f7];
+  }
 
-.car-detail span {
-  @apply font-semibold;
-}
+  .category {
+    @apply flex flex-col justify-center items-center text-sm font-semibold bg-[#befa00] py-3 rounded-md;
+  }
 
-.category {
-  @apply flex flex-col justify-center items-center text-sm font-semibold bg-[#befa00] py-3 rounded-md;
-}
+  .category div {
+    @apply scale-125;
+  }
 
-.category div {
-  @apply scale-125;
+  .car-detail {
+    @apply flex justify-between items-center text-sm;
+  }
+
+  .car-detail span {
+    @apply font-semibold;
+  }
 }

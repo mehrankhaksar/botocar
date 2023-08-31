@@ -1,18 +1,22 @@
-import FiltersContainer from "@/components/FiltersContainer";
-import Button from "@/components/Elements/Button";
+import React from "react";
+
+import Link from "next/link";
+
+import FiltersContainer from "@/components/modules/FiltersContainer";
 import CarsListPage from "@/components/templates/CarsListPage";
 
-export default function Home({ data }) {
+function Home({ data }) {
   const newCarsListData = data.slice(0, 3);
 
   return (
     <section className="w-full flex flex-col items-center space-y-4">
       <FiltersContainer />
-      <Button
-        styles="w-full h-fit font-semibold bg-[#befa00] py-2 rounded-md sm:max-w-sm"
-        path="/cars"
-        value="See All Cars"
-      />
+      <Link
+        className="w-full font-semibold text-center bg-[#befa00] py-1.5 rounded-md sm:max-w-sm"
+        href="/cars"
+      >
+        See All Cars
+      </Link>
       <CarsListPage carsListData={newCarsListData} />
     </section>
   );
@@ -26,3 +30,5 @@ export async function getStaticProps() {
     props: { data },
   };
 }
+
+export default Home;

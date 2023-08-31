@@ -1,7 +1,7 @@
 import React from "react";
 
-import Categories from "./modules/Categories";
-import Search from "./modules/Search";
+import Categories from "./Categories";
+import Search from "./Search";
 
 function FiltersContainer() {
   return (
