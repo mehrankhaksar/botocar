@@ -1,5 +1,6 @@
 import React from "react";
 
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 import { Disclosure } from "@headlessui/react";
@@ -41,7 +42,13 @@ function CarDetailsPage({
         />
       </div>
       <div className="grid gap-5 bg-white p-3 rounded shadow-lg sm:grid-cols-2 sm:content-center">
-        <img className="w-full rounded-sm" src={image} alt={name} />
+        <Image
+          className="w-full rounded-sm"
+          src={image}
+          width={250}
+          height={250}
+          alt={name}
+        />
         <div className="space-y-2.5">
           <div className="bg-white space-y-3 p-3 rounded-md shadow-md">
             <div className="car-detail">

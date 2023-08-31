@@ -1,6 +1,7 @@
 import React from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
@@ -8,9 +9,13 @@ function Card({ id, image, name, model, year, distance, price, location }) {
   return (
     <Link href={`/cars/${id}`}>
       <article className="space-y-3 p-4 rounded-sm shadow-md">
-        <img
-          className="w-full h-[250px] object-contain rounded-sm"
+        <Image
+          className="w-full object-contain rounded-sm"
           src={image}
+          width={250}
+          height={250}
+          loading="eager"
+          priority={true}
           alt={name}
         />
         <div className="grid gap-2">
