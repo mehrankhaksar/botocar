@@ -43,6 +43,7 @@ function Search() {
           className="w-full py-1 px-2 shadow"
           type="number"
           name="minPrice"
+          min={0}
           value={price.minPrice}
           placeholder="Inter min-price"
           onChange={changeHandler}
@@ -51,6 +52,7 @@ function Search() {
           className="w-full py-1 px-2 shadow"
           type="number"
           name="maxPrice"
+          min={0}
           value={price.maxPrice}
           placeholder="Inter Max-price"
           onChange={changeHandler}
